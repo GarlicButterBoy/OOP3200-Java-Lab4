@@ -1,6 +1,9 @@
 package ca.durhamcollege;
 
 import org.jetbrains.annotations.NotNull;
+//For round method
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 
 public abstract class Employee extends Person
@@ -22,7 +25,8 @@ public abstract class Employee extends Person
     {
 
         super(fullName, birthDate);
-        if(!(employeeId.length() < 8 && employeeId.length() > 8))
+        //if employee id is 8chars then proceed, otherwise throw an error
+        if(employeeId.length() == 8)
         {
             this.employeeId = employeeId;
         }
@@ -38,10 +42,35 @@ public abstract class Employee extends Person
     }
 
     public double calculatePayDay()
+
     {
-        return 0 ;
+        double payday = 0.00;
+
+        return payday;
+    }
+
+    public String toString()
+    {
+        String outputStr = "";
+        outputStr += "\n========================================\n";
+        outputStr += getName() + "\n";
+        outputStr += getFirstName() + "'s Birthday: " + getBirthDate() + "\n";
+        outputStr += getFirstName() + "'s Id: " + getEmployeeId() + "\n";
+        outputStr += "========================================\n";
+
+        return outputStr;
     }
 
 
+    //Got this method from this comment : https://stackoverflow.com/a/2808648
+    //Just so you know! :)
+    public static double round(double value, int places)
+    {
+        if (places < 0) throw new IllegalArgumentException();
+
+        BigDecimal bd = BigDecimal.valueOf(value);
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
+    }
 
 }

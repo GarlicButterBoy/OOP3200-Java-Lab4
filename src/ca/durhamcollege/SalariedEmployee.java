@@ -42,7 +42,22 @@ public class SalariedEmployee extends Employee
     @Override
     public double calculatePayDay()
     {
+        double payday = getYearlySalary() / 52;
 
-        return getYearlySalary();
+        return round(payday, 2);
+    }
+
+    public String toString()
+    {
+        String outputStr = "";
+        outputStr += "\n========================================\n";
+        outputStr += getName() + "\n";
+        outputStr += getFirstName() + "'s Birthday : " + getBirthDate() + "\n";
+        outputStr += getFirstName() + "'s Id       : " + getEmployeeId() + "\n";
+        outputStr += getFirstName() + "'s Salary   : " + getYearlySalary() + "\n";
+        outputStr += getFirstName() + "'s Pay Stub : " + calculatePayDay() + "\n";
+        outputStr += "========================================\n";
+
+        return outputStr;
     }
 }
