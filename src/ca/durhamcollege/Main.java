@@ -7,11 +7,13 @@ public class Main {
 
     public static void main(String[] args)
     {
+        //Declarations
         LocalDate currentDate = LocalDate.now();
+        double totalPay = 0.0;
         //Salary Employees
         SalariedEmployee testSalary = new SalariedEmployee("Nick Sturch", currentDate, "10030376", 50000);
         SalariedEmployee salaryTwo = new SalariedEmployee("Randolph Carter", currentDate, "10764582", 63000);
-        SalariedEmployee salaryThree = new SalariedEmployee("J.Jonah Jameson", currentDate, "16458214", 49000);
+        SalariedEmployee salaryThree = new SalariedEmployee("Jayjonah Jameson", currentDate, "16458214", 49000);
         //Hourly Employees
         HourlyWorker testHourly = new HourlyWorker("Kaifkhan Vakil", currentDate, "10021423", 18, 40);
         HourlyWorker hourlyTwo = new HourlyWorker("Dennis Nedry", currentDate, "14514587", 32, 36);
@@ -39,6 +41,12 @@ public class Main {
             //Array with both types of employees
             Employee workerArray[] = new Employee[]{testSalary, salaryTwo, salaryThree, testHourly, hourlyTwo, hourlyThree, hourlyFour};
 
+            for (int i = 0; i < workerArray.length; i++)
+            {
+                totalPay += workerArray[i].calculatePayDay();
+                System.out.println(workerArray[i].getFirstName() + " or Employee " + workerArray[i].getEmployeeId() + " is being paid $" + workerArray[i].calculatePayDay());
+            }
+            System.out.println("Total Cost this Week : $" + totalPay );
 
         }
         catch(ArithmeticException ae)
