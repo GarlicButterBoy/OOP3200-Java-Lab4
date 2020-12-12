@@ -1,6 +1,7 @@
 package ca.durhamcollege;
 
 import java.time.LocalDate;
+import java.util.Scanner;
 
 public class SalariedEmployee extends Employee
 {
@@ -29,14 +30,32 @@ public class SalariedEmployee extends Employee
         return yearlySalary;
     }
 
-    public void setYearlySalary(double yearlySalary)
+    public void setYearlySalary()
     {
-        if(yearlySalary < 0)
+        //Declarations
+        Scanner keyboard = new Scanner(System.in);
+        boolean dirtyFlag = true;
+        double yearlySalary = 0.00;
+
+        while(dirtyFlag)
         {
-            throw  new ArithmeticException("Salary cannot be negative");
+            System.out.print("\nPlease enter a new salary: ");
+            yearlySalary = keyboard.nextDouble();
+
+            if (yearlySalary > 0 && yearlySalary < 10000)
+            {
+                System.out.println("Morally I cant let you do that, try again!");
+            }
+            else if (yearlySalary < 0)
+            {
+                System.out.println("Salary cannot be negative");
+            }
+            else
+            {
+                this.yearlySalary = yearlySalary;
+                dirtyFlag = false;
+            }
         }
-        else
-            this.yearlySalary = yearlySalary;
     }
 
     @Override

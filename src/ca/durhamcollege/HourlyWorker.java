@@ -32,11 +32,31 @@ public class HourlyWorker extends Employee
         return hourlyRate;
     }
 
-    public void setHourlyRate(double hourlyRate)
+    public void setHourlyRate()
     {
-        if (hourlyRate >= 17)
+        //Declarations
+        Scanner keyboard = new Scanner(System.in);
+        boolean dirtyFlag = true;
+        double hourlyRate = 0.00;
+
+        while(dirtyFlag)
         {
-            this.hourlyRate = hourlyRate;
+            System.out.print("\nPlease enter your new rate: ");
+            hourlyRate = keyboard.nextDouble();
+
+            if (hourlyRate < 0)
+            {
+                System.out.println("You cannot enter a negative number.");
+            }
+            else if (hourlyRate >= 17)
+            {
+                this.hourlyRate = hourlyRate;
+                dirtyFlag = false;
+            }
+            else
+            {
+                System.out.println("Can't let you do that champ, try more than 16.99!");
+            }
         }
     }
 
@@ -56,14 +76,18 @@ public class HourlyWorker extends Employee
             System.out.print("\nPlease enter your hours: ");
             hoursPerWeekAmount = keyboard.nextDouble();
 
-            if (hoursPerWeekAmount <= 48.0)
+            if (hoursPerWeekAmount < 0)
+            {
+                System.out.println("You cannot enter a negative number.");
+            }
+            else if (hoursPerWeekAmount <= 48.0)
             {
                 this.hoursPerWeekAmount = hoursPerWeekAmount;
                 dirtyFlag = false;
             }
             else
             {
-                throw new IllegalArgumentException("You cannot enter more than 48 hours per week.");
+                System.out.println("You cannot enter more than 48 hours per week.");
             }
         }
 
