@@ -41,6 +41,7 @@ public abstract class Employee extends Person
         return employeeId;
     }
 
+    //just to be overridden
     public double calculatePayDay()
 
     {

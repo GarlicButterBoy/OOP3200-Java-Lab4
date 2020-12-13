@@ -32,7 +32,7 @@ public class Main {
             //Print the Hourly Worker, then Update
             System.out.println(testHourly.toString());
             System.out.println("Please enter a new hourly rate for " + testHourly.getFirstName());
-            testHourly.setHourlyRate(); //DOESNT WORK YET
+            testHourly.setHourlyRate();
             System.out.println("Please enter " + testHourly.getFirstName() + "'s hours this week: ");
             System.out.println("Your new Rate is: " + testHourly.round(testHourly.getHourlyRate(), 2));
             testHourly.setHoursPerWeekAmount();
@@ -41,12 +41,14 @@ public class Main {
             //Array with both types of employees
             Employee workerArray[] = new Employee[]{testSalary, salaryTwo, salaryThree, testHourly, hourlyTwo, hourlyThree, hourlyFour};
 
+
+            System.out.println("\nPrinting out the Employee Array");
             for (int i = 0; i < workerArray.length; i++)
             {
                 totalPay += workerArray[i].calculatePayDay();
                 System.out.println(workerArray[i].getFirstName() + " or Employee " + workerArray[i].getEmployeeId() + " is being paid $" + workerArray[i].calculatePayDay());
             }
-            System.out.println("Total Cost this Week : $" + totalPay );
+            System.out.println("Total Cost this Week : $" + testHourly.round(totalPay,2) );
 
         }
         catch(ArithmeticException ae)
